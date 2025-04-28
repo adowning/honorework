@@ -1,0 +1,25 @@
+version: '3'
+services:
+  nestjs:
+    build: .
+    ports:
+      - '3000:3000'
+    volumes:
+      - .:/app
+      - ${LARAVEL_PATH}:/app/laravel
+    depends_on:
+      - mysql
+
+  laravel:
+    image: php:8.1-fpm
+    working_dir: /app/laravel
+    volumes:
+      - ${LARAVEL_PATH}:/app
+    depends_on:
+      - mysql
+
+  mysql:
+    image: mysql:8.0
+    environment:
+      MYSQL_ROOT_PASSWORD: secret
+      MYSQL_DATABASE: social_casino

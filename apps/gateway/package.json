@@ -1,0 +1,29 @@
+{
+  "name": "gateway",
+  "dependencies": {
+    "@hono/node-server": "^1.14.1",
+    "@mikro-orm/cli": "^6.4.13",
+    "@mikro-orm/postgresql": "^6.4.13",
+    "@mikro-orm/reflection": "^6.4.13",
+    "@mikro-orm/sql-highlighter": "^1.0.1",
+    "@thanhhoajs/logger": "^1.0.7",
+    "bun": "^1.2.10",
+    "bun-types": "^1.2.10",
+    "destr": "^2.0.5",
+    "drizzle-orm": "^0.43.1",
+    "eventemitter2": "^6.4.9",
+    "hono": "^4.7.7",
+    "jsonwebtoken": "^9.0.2",
+    "pg": "^8.15.5",
+    "ts-node": "^10.9.2",
+    "universal-cookie": "^7"
+  },
+  "devDependencies": {
+    "@types/bun": "^1.2.10",
+    "@types/pg": "^8.11.14"
+  },
+  "scripts": {
+    "dev": "bun run  src/index.ts --watch --elide 500",
+    "m:gen": "pnpm mikro-orm schema:create --dump"
+  }
+}

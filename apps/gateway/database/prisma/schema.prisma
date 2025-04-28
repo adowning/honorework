@@ -1,0 +1,420 @@
+generator client {
+  provider = "prisma-client-js"
+  output   = "../src/generated/prisma"
+}
+
+generator drizzle {
+  provider = "./node_modules/.bin/drizzle-prisma-generator"
+  output   = "../../src/generated/drizzle" // Where to put generated Drizle tables
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model achievement {
+  id              String            @id(map: "Achievement_pkey")
+  name            String
+  description     String
+  targetXp        Int
+  reward          Decimal?
+  isActive        Boolean           @default(true)
+  createdAt       DateTime          @default(now())
+  updatedAt       DateTime
+  userachievement userachievement[]
+}
+
+model bank {
+  id         String    @id(map: "Bank_pkey")
+  name       String
+  currency   String    @default("USD")
+  isActive   Boolean   @default(true)
+  createdAt  DateTime  @default(now())
+  operatorId String
+  operator   operator  @relation(fields: [operatorId], references: [id], map: "Bank_operatorId_fkey")
+  profile    profile[]
+
+  @@unique([operatorId, name], map: "Bank_operatorId_name_key")
+}
+
+model chatmessage {
+  id        String      @id(map: "ChatMessage_pkey")
+  content   String
+  channel   ChatChannel
+  metadata  Json?
+  createdAt DateTime    @default(now())
+  userId    String
+  roomId    String?
+  chatroom  chatroom?   @relation(fields: [roomId], references: [id], map: "ChatMessage_roomId_fkey")
+  user      user        @relation(fields: [userId], references: [id], map: "ChatMessage_userId_fkey")
+
+  @@index([channel], map: "chat_channel_idx")
+  @@index([roomId], map: "chat_room_idx")
+}
+
+model chatroom {
+  id            String        @id(map: "ChatRoom_pkey")
+  name          String
+  isGameRoom    Boolean       @default(false)
+  createdAt     DateTime      @default(now())
+  gameSessionId String?
+  chatmessage   chatmessage[]
+  gamesession   gamesession?  @relation(fields: [gameSessionId], references: [id], map: "ChatRoom_gameSessionId_fkey")
+}
+
+model friendship {
+  id                             String           @id(map: "Friendship_pkey")
+  status                         FriendshipStatus @default(PENDING)
+  createdAt                      DateTime         @default(now())
+  updatedAt                      DateTime
+  userId                         String
+  friendId                       String
+  user_friendship_friendIdTouser user             @relation("friendship_friendIdTouser", fields: [friendId], references: [id], map: "Friendship_friendId_fkey")
+  user_friendship_userIdTouser   user             @relation("friendship_userIdTouser", fields: [userId], references: [id], map: "Friendship_userId_fkey")
+
+  @@unique([userId, friendId], map: "Friendship_userId_friendId_key")
+}
+
+model gamesession {
+  id           String        @id(map: "GameSession_pkey")
+  startTime    DateTime      @default(now())
+  endTime      DateTime?
+  betAmount    Decimal?
+  winAmount    Decimal?
+  xpEarned     Int           @default(0)
+  metadata     Json?
+  gameId       String
+  tournamentId String?
+  active       Boolean       @default(false)
+  profileId    String
+  chatroom     chatroom[]
+  operatorgame operatorgame  @relation(fields: [gameId], references: [id], map: "GameSession_gameId_fkey")
+  profile      profile       @relation(fields: [profileId], references: [id], map: "GameSession_profileId_fkey")
+  tournament   tournament?   @relation(fields: [tournamentId], references: [id], map: "GameSession_tournamentId_fkey")
+  transaction  transaction[]
+
+  @@index([gameId], map: "session_game_idx")
+  @@index([profileId], map: "session_profile_idx")
+}
+
+model notification {
+  id        String           @id(map: "Notification_pkey")
+  type      NotificationType
+  title     String
+  message   String
+  isRead    Boolean          @default(false)
+  readAt    DateTime?
+  metadata  Json?
+  createdAt DateTime         @default(now())
+  userId    String
+  user      user             @relation(fields: [userId], references: [id], map: "Notification_userId_fkey")
+
+  @@index([userId, isRead], map: "notification_user_status_idx")
+}
+
+model operator {
+  id           String         @id(map: "Operator_pkey")
+  name         String
+  slug         String         @unique(map: "Operator_slug_key")
+  logo         String?
+  description  String?
+  isActive     Boolean        @default(true)
+  createdAt    DateTime       @default(now())
+  updatedAt    DateTime
+  ownerId      String
+  bank         bank[]
+  user         user           @relation(fields: [ownerId], references: [id], map: "Operator_ownerId_fkey")
+  operatorgame operatorgame[]
+  profile      profile[]
+  tournament   tournament[]
+
+  @@index([slug])
+}
+
+model operatorgame {
+  id             String           @id(map: "OperatorGame_pkey")
+  name           String
+  slug           String           @unique(map: "OperatorGame_slug_key")
+  description    String?
+  thumbnail      String?
+  minBet         Decimal?
+  maxBet         Decimal?
+  xpMultiplier   Float            @default(1.0)
+  isActive       Boolean          @default(true)
+  isPromoted     Boolean          @default(false)
+  createdAt      DateTime         @default(now())
+  updatedAt      DateTime
+  operatorId     String
+  gamesession    gamesession[]
+  operator       operator         @relation(fields: [operatorId], references: [id], map: "OperatorGame_operatorId_fkey")
+  tournamentgame tournamentgame[]
+
+  @@index([slug], map: "game_slug_idx")
+}
+
+model profile {
+  id                        String            @id(map: "Profile_pkey")
+  profileNumber             String            @unique(map: "Profile_profileNumber_key")
+  balance                   Int               @default(0)
+  xpEarned                  Int               @default(0)
+  isActive                  Boolean           @default(false)
+  lastPlayed                DateTime?
+  createdAt                 DateTime          @default(now())
+  updatedAt                 DateTime
+  phpId                     Int?              @unique(map: "Profile_phpId_key")
+  userId                    String
+  bankId                    String
+  shopId                    String
+  gamesession               gamesession[]
+  bank                      bank              @relation(fields: [bankId], references: [id], onDelete: Cascade, map: "Profile_bankId_fkey")
+  operator                  operator          @relation(fields: [shopId], references: [id], onDelete: Cascade, map: "Profile_shopId_fkey")
+  user_profile_userIdTouser user              @relation("profile_userIdTouser", fields: [userId], references: [id], onDelete: Cascade, map: "Profile_userId_fkey")
+  tournamententry           tournamententry[]
+  transaction               transaction[]
+
+  @@unique([userId, shopId], map: "Profile_userId_shopId_key")
+  @@index([shopId, isActive], map: "operator_active_profile_idx")
+  @@index([profileNumber], map: "profile_number_idx")
+  @@index([userId, isActive], map: "user_active_profile_idx")
+}
+
+model session {
+  id           String   @id(map: "Session_pkey")
+  userId       String
+  activeGameId String?
+  ipAddress    String?
+  userAgent    String?
+  expiresAt    DateTime
+  createdAt    DateTime @default(now())
+  refreshToken String   @unique(map: "Session_refreshToken_key")
+  active       Boolean  @default(false)
+  user         user     @relation(fields: [userId], references: [id], map: "Session_userId_fkey")
+
+  @@index([refreshToken], map: "Session_refreshToken_idx")
+  @@index([userId], map: "Session_userId_idx")
+}
+
+model tournament {
+  id              String            @id(map: "Tournament_pkey")
+  name            String
+  description     String?
+  startTime       DateTime
+  endTime         DateTime
+  entryFee        Decimal?
+  prizePool       Decimal           @default(0)
+  isActive        Boolean           @default(true)
+  createdAt       DateTime          @default(now())
+  updatedAt       DateTime
+  operatorId      String
+  leaderboard     Json?
+  gamesession     gamesession[]
+  operator        operator          @relation(fields: [operatorId], references: [id], map: "Tournament_operatorId_fkey")
+  tournamententry tournamententry[]
+  tournamentgame  tournamentgame[]
+
+  @@index([operatorId], map: "tournament_operator_idx")
+}
+
+model tournamententry {
+  id           String     @id(map: "TournamentEntry_pkey")
+  score        Int        @default(0)
+  wagered      Decimal    @default(0)
+  won          Decimal    @default(0)
+  joinedAt     DateTime   @default(now())
+  userId       String
+  tournamentId String
+  profileId    String
+  profile      profile    @relation(fields: [profileId], references: [id], map: "TournamentEntry_profileId_fkey")
+  tournament   tournament @relation(fields: [tournamentId], references: [id], map: "TournamentEntry_tournamentId_fkey")
+  user         user       @relation(fields: [userId], references: [id], map: "TournamentEntry_userId_fkey")
+
+  @@unique([userId, tournamentId], map: "TournamentEntry_userId_tournamentId_key")
+}
+
+model tournamentgame {
+  id           String       @id(map: "TournamentGame_pkey")
+  multiplier   Float        @default(1.0)
+  tournamentId String
+  gameId       String
+  operatorgame operatorgame @relation(fields: [gameId], references: [id], map: "TournamentGame_gameId_fkey")
+  tournament   tournament   @relation(fields: [tournamentId], references: [id], map: "TournamentGame_tournamentId_fkey")
+
+  @@unique([tournamentId, gameId], map: "TournamentGame_tournamentId_gameId_key")
+}
+
+model transaction {
+  id             String            @id(map: "Transaction_pkey")
+  type           TransactionType
+  amount         Decimal
+  reference      String?
+  status         TransactionStatus @default(PENDING)
+  metadata       Json?
+  isRealMoney    Boolean           @default(false)
+  paymentMethod  String?
+  paymentDetails Json?
+  createdAt      DateTime          @default(now())
+  processedAt    DateTime?
+  gameSessionId  String?
+  profileId      String
+  gamesession    gamesession?      @relation(fields: [gameSessionId], references: [id], map: "Transaction_gameSessionId_fkey")
+  profile        profile           @relation(fields: [profileId], references: [id], map: "Transaction_profileId_fkey")
+
+  @@index([profileId], map: "transaction_profile_idx")
+  @@index([type])
+}
+
+model user {
+  id                                   String            @id(map: "User_pkey")
+  username                             String            @unique(map: "User_username_key")
+  email                                String            @unique(map: "User_email_key")
+  passwordHash                         String
+  avatar                               String?
+  totalXp                              Int               @default(0)
+  balance                              Decimal           @default(0)
+  lastLogin                            DateTime?
+  isVerified                           Boolean           @default(false)
+  verificationToken                    String?
+  createdAt                            DateTime          @default(now())
+  updatedAt                            DateTime
+  active                               Boolean           @default(false)
+  activeProfileId                      String?           @unique(map: "User_activeProfileId_key")
+  gender                               Gender?
+  status                               UserStatus?
+  cashtag                              String?
+  phpId                                Int?
+  accessToken                          String?
+  RainBet                              RainBet[]
+  RainHistory                          RainHistory[]
+  RainTip                              RainTip[]
+  RainWinner                           RainWinner[]
+  chatmessage                          chatmessage[]
+  friendship_friendship_friendIdTouser friendship[]      @relation("friendship_friendIdTouser")
+  friendship_friendship_userIdTouser   friendship[]      @relation("friendship_userIdTouser")
+  notification                         notification[]
+  operator                             operator[]
+  profile_profile_userIdTouser         profile[]         @relation("profile_userIdTouser")
+  session                              session[]
+  tournamententry                      tournamententry[]
+  userachievement                      userachievement[]
+
+  @@index([createdAt], map: "user_created_at_idx")
+  @@index([username, email])
+}
+
+model userachievement {
+  id            String      @id(map: "UserAchievement_pkey")
+  progress      Int         @default(0)
+  isUnlocked    Boolean     @default(false)
+  unlockedAt    DateTime?
+  createdAt     DateTime    @default(now())
+  updatedAt     DateTime
+  userId        String
+  achievementId String
+  achievement   achievement @relation(fields: [achievementId], references: [id], map: "UserAchievement_achievementId_fkey")
+  user          user        @relation(fields: [userId], references: [id], map: "UserAchievement_userId_fkey")
+
+  @@unique([userId, achievementId], map: "UserAchievement_userId_achievementId_key")
+}
+
+model RainBet {
+  id            String      @id
+  rainHistoryId String
+  userId        String
+  betAmount     Decimal     @db.Decimal(10, 2)
+  odds          Decimal     @db.Decimal(10, 2)
+  outcome       String?
+  settledAt     DateTime?
+  RainHistory   RainHistory @relation(fields: [rainHistoryId], references: [id], onDelete: Cascade, map: "RainBet_rainHistoryId_RainHistory_id_fk")
+  user          user        @relation(fields: [userId], references: [id], onDelete: Cascade, map: "RainBet_userId_user_id_fk")
+}
+
+model RainHistory {
+  id         String       @id
+  userId     String
+  amount     Decimal      @db.Decimal(10, 2)
+  rainType   String
+  createdAt  DateTime     @default(now())
+  RainBet    RainBet[]
+  user       user         @relation(fields: [userId], references: [id], onDelete: Cascade, map: "RainHistory_userId_user_id_fk")
+  RainTip    RainTip[]
+  RainWinner RainWinner[]
+}
+
+model RainTip {
+  id            String      @id
+  rainHistoryId String
+  userId        String
+  tipAmount     Decimal     @db.Decimal(10, 2)
+  tippedAt      DateTime    @default(now())
+  RainHistory   RainHistory @relation(fields: [rainHistoryId], references: [id], onDelete: Cascade, map: "RainTip_rainHistoryId_RainHistory_id_fk")
+  user          user        @relation(fields: [userId], references: [id], onDelete: Cascade, map: "RainTip_userId_user_id_fk")
+}
+
+model RainWinner {
+  id            String      @id
+  rainHistoryId String
+  userId        String
+  wonAmount     Decimal     @db.Decimal(10, 2)
+  wonAt         DateTime    @default(now())
+  RainHistory   RainHistory @relation(fields: [rainHistoryId], references: [id], onDelete: Cascade, map: "RainWinner_rainHistoryId_RainHistory_id_fk")
+  user          user        @relation(fields: [userId], references: [id], onDelete: Cascade, map: "RainWinner_userId_user_id_fk")
+}
+
+enum ChatChannel {
+  LOBBY
+  GAME
+  TOURNAMENT
+  PRIVATE
+}
+
+enum FriendshipStatus {
+  PENDING
+  ACCEPTED
+  BLOCKED
+}
+
+enum Gender {
+  BOY
+  GIRL
+  ALIEN
+  UNSURE
+  ROBOT
+  COMPLICATED
+}
+
+enum NotificationType {
+  SYSTEM
+  FRIEND_REQUEST
+  ACHIEVEMENT
+  BALANCE_UPDATE
+  PROMOTIONAL
+  TOURNAMENT
+}
+
+enum TransactionStatus {
+  PENDING
+  COMPLETED
+  FAILED
+  CANCELLED
+  REFUNDED
+}
+
+enum TransactionType {
+  DEPOSIT
+  WITHDRAWAL
+  BET
+  WIN
+  BONUS
+  DONATION
+  ADJUSTMENT
+  TOURNAMENT_BUYIN
+  TOURNAMENT_PRIZE
+}
+
+enum UserStatus {
+  ACTIVE
+  INACTIVE
+  ONLINE
+  OFFLINE
+}

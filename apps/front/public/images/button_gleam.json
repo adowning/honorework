@@ -1,0 +1,69 @@
+{
+  "frames": [
+    {
+      "filename": "Untitled.png",
+      "frame": { "x": 1290, "y": 1, "w": 120, "h": 57 },
+      "rotated": false,
+      "trimmed": false,
+      "spriteSourceSize": { "x": 0, "y": 0, "w": 120, "h": 57 },
+      "sourceSize": { "w": 120, "h": 57 }
+    },
+    {
+      "filename": "clubs___images___animations___buttonGleam___assets___shine1.png",
+      "frame": { "x": 1168, "y": 1, "w": 120, "h": 57 },
+      "rotated": false,
+      "trimmed": false,
+      "spriteSourceSize": { "x": 0, "y": 0, "w": 120, "h": 57 },
+      "sourceSize": { "w": 120, "h": 57 }
+    },
+    {
+      "filename": "clubs___images___animations___buttonGleam___assets___shine2.png",
+      "frame": { "x": 828, "y": 1, "w": 213, "h": 57 },
+      "rotated": false,
+      "trimmed": false,
+      "spriteSourceSize": { "x": 0, "y": 0, "w": 213, "h": 57 },
+      "sourceSize": { "w": 213, "h": 57 }
+    },
+    {
+      "filename": "clubs___images___animations___buttonGleam___assets___shine3.png",
+      "frame": { "x": 306, "y": 1, "w": 302, "h": 57 },
+      "rotated": false,
+      "trimmed": false,
+      "spriteSourceSize": { "x": 0, "y": 0, "w": 302, "h": 57 },
+      "sourceSize": { "w": 302, "h": 57 }
+    },
+    {
+      "filename": "clubs___images___animations___buttonGleam___assets___shine4.png",
+      "frame": { "x": 1, "y": 1, "w": 303, "h": 57 },
+      "rotated": false,
+      "trimmed": false,
+      "spriteSourceSize": { "x": 0, "y": 0, "w": 303, "h": 57 },
+      "sourceSize": { "w": 303, "h": 57 }
+    },
+    {
+      "filename": "clubs___images___animations___buttonGleam___assets___shine5.png",
+      "frame": { "x": 610, "y": 1, "w": 216, "h": 57 },
+      "rotated": false,
+      "trimmed": false,
+      "spriteSourceSize": { "x": 0, "y": 0, "w": 216, "h": 57 },
+      "sourceSize": { "w": 216, "h": 57 }
+    },
+    {
+      "filename": "clubs___images___animations___buttonGleam___assets___shine6.png",
+      "frame": { "x": 1043, "y": 1, "w": 123, "h": 57 },
+      "rotated": false,
+      "trimmed": false,
+      "spriteSourceSize": { "x": 0, "y": 0, "w": 123, "h": 57 },
+      "sourceSize": { "w": 123, "h": 57 }
+    }
+  ],
+  "meta": {
+    "app": "https://www.codeandweb.com/texturepacker",
+    "version": "1.0",
+    "image": "button_gleam.png",
+    "format": "RGBA8888",
+    "size": { "w": 1411, "h": 59 },
+    "scale": "1",
+    "smartupdate": "$TexturePacker:SmartUpdate:0f8d18ae0184ba2ca73cfea747bba004:dc52e556d8c8ec5c8257921f903c6393:23bef2a6c237e686359e52bdf04a409c$"
+  }
+}

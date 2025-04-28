@@ -1,0 +1,13 @@
+{
+  "verbose": true,
+  "apiInputPath": "../api",
+  "sdkOutput": "src/sdk",
+  "sdkInterfacePath": "src/sdk-interface.ts",
+  "magicTypes": [
+    {
+      "nodeModuleFilePath": "prisma/client/runtime/library.js",
+      "typeName": "JsonValue",
+      "placeholderContent": "export type JsonValue<T> = {};"
+    }
+  ]
+}

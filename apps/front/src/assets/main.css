@@ -1,0 +1,78 @@
+@import 'tailwindcss/utilities';
+@import 'tailwindcss/theme.css' layer(theme);
+
+/* @layer theme, base, components, utilities;
+
+@import 'tailwindcss/theme.css' layer(theme);
+@import 'tailwindcss/preflight.css' layer(base);
+@import 'tailwindcss/utilities.css' layer(utilities); */
+@import 'tailwindcss';
+
+@import './base.css';
+html {
+  height: 100%;
+  
+}
+
+/* 灰色模式 */
+html.grayscale-mode {
+  filter: grayscale(1);
+}
+
+/* 色弱模式 */
+html.colorblind-mode {
+  filter: invert(0.8);
+}
+
+body {
+  color: white;
+  /* justify-content: center; */
+  background: url('/images/skyline.jpeg');
+  /* background-repeat: no-repeat; */
+  -moz-osx-font-smoothing: grayscale;
+  -webkit-font-smoothing: antialiased;
+  font-family: var(--van-base-font);
+  /* 禁止 iOS 和 macOS 系统默认的橡皮筋效果 */
+  overflow: hidden !important;
+}
+
+/* #app {
+  background: url('/images/b.png') !important;
+  margin: auto;
+  z-index: -1;
+  overflow: hidden !important;
+  max-height: 100vh;
+  margin-top: 20vh;
+  margin-bottom: 20vh;
+  margin-left: 20vw;
+  margin-right: 20vw;
+
+} */
+
+a,
+.green {
+  text-decoration: none;
+  color: hsla(160, 100%, 37%, 1);
+  transition: 0.4s;
+  padding: 3px;
+}
+/*
+@media (hover: hover) {
+  a:hover {
+    background-color: hsla(160, 100%, 37%, 0.2);
+  }
+}
+
+@media (min-width: 1024px) {
+  body {
+    display: flex;
+    place-items: center;
+  }
+
+  #app {
+    display: grid;
+    margin: auto;
+    justify-content: center;
+    grid-template-columns: 1fr 1fr;
+  } */
+/* } */

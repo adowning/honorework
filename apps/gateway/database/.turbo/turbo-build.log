@@ -1,0 +1,5 @@
+
+
+> @cashflow/database@ build /tmp/honodeep/libs/database
+> tsc --build
+

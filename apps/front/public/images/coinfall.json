@@ -1,0 +1,111 @@
+[
+  {
+    "frames": {
+      "CoinFallAnimationSmall_00/CoinFallAnimationSmall_00-hd.png": {
+        "aliases": [],
+        "spriteOffset": "{0,0}",
+        "spriteSize": "{45,45}",
+        "spriteSourceSize": "{45,45}",
+        "textureRect": "{{1,266},{45,45}}",
+        "textureRotated": false
+      },
+      "CoinFallAnimationSmall_01/CoinFallAnimationSmall_00-hd.png": {
+        "aliases": [],
+        "spriteOffset": "{0,0}",
+        "spriteSize": "{45,45}",
+        "spriteSourceSize": "{45,45}",
+        "textureRect": "{{1,313},{45,45}}",
+        "textureRotated": false
+      },
+      "CoinFallAnimationSmall_00/CoinFallAnimationSmall_0002.png": {
+        "aliases": [],
+        "spriteOffset": "{-2,0}",
+        "spriteSize": "{41,45}",
+        "spriteSourceSize": "{45,45}",
+        "textureRect": "{{1,180},{41,45}}",
+        "textureRotated": true
+      },
+      "CoinFallAnimationSmall_00/CoinFallAnimationSmall_0003.png": {
+        "aliases": [],
+        "spriteOffset": "{-3,0}",
+        "spriteSize": "{33,45}",
+        "spriteSourceSize": "{45,45}",
+        "textureRect": "{{1,145},{33,45}}",
+        "textureRotated": true
+      },
+      "CoinFallAnimationSmall_00/CoinFallAnimationSmall_0004.png": {
+        "aliases": [],
+        "spriteOffset": "{-5,0}",
+        "spriteSize": "{29,45}",
+        "spriteSourceSize": "{45,45}",
+        "textureRect": "{{1,81},{29,45}}",
+        "textureRotated": true
+      },
+      "CoinFallAnimationSmall_00/CoinFallAnimationSmall_0005.png": {
+        "aliases": [],
+        "spriteOffset": "{-3,0}",
+        "spriteSize": "{17,45}",
+        "spriteSourceSize": "{45,45}",
+        "textureRect": "{{1,18},{17,45}}",
+        "textureRotated": true
+      },
+      "CoinFallAnimationSmall_00/CoinFallAnimationSmall_0006.png": {
+        "aliases": [],
+        "spriteOffset": "{-1,0}",
+        "spriteSize": "{15,45}",
+        "spriteSourceSize": "{45,45}",
+        "textureRect": "{{1,1},{15,45}}",
+        "textureRotated": true
+      },
+      "CoinFallAnimationSmall_00/CoinFallAnimationSmall_0007.png": {
+        "aliases": [],
+        "spriteOffset": "{1,0}",
+        "spriteSize": "{17,45}",
+        "spriteSourceSize": "{45,45}",
+        "textureRect": "{{1,37},{17,45}}",
+        "textureRotated": true
+      },
+      "CoinFallAnimationSmall_00/CoinFallAnimationSmall_0008.png": {
+        "aliases": [],
+        "spriteOffset": "{1,0}",
+        "spriteSize": "{23,45}",
+        "spriteSourceSize": "{45,45}",
+        "textureRect": "{{1,56},{23,45}}",
+        "textureRotated": true
+      },
+      "CoinFallAnimationSmall_00/CoinFallAnimationSmall_0009.png": {
+        "aliases": [],
+        "spriteOffset": "{1,0}",
+        "spriteSize": "{31,45}",
+        "spriteSourceSize": "{45,45}",
+        "textureRect": "{{1,112},{31,45}}",
+        "textureRotated": true
+      },
+      "CoinFallAnimationSmall_00/CoinFallAnimationSmall_0010.png": {
+        "aliases": [],
+        "spriteOffset": "{1,0}",
+        "spriteSize": "{41,45}",
+        "spriteSourceSize": "{45,45}",
+        "textureRect": "{{1,223},{41,45}}",
+        "textureRotated": true
+      },
+      "CoinFallAnimationSmall_00/CoinFallAnimationSmall_0011.png": {
+        "aliases": [],
+        "spriteOffset": "{0,0}",
+        "spriteSize": "{45,45}",
+        "spriteSourceSize": "{45,45}",
+        "textureRect": "{{1,360},{45,45}}",
+        "textureRotated": false
+      }
+    },
+    "metadata": {
+      "format": 3,
+      "pixelFormat": "RGBA8888",
+      "premultiplyAlpha": false,
+      "realTextureFileName": "CoinFallAnimationSmall_00-hd.png",
+      "size": "{47,406}",
+      "smartupdate": "$TexturePacker:SmartUpdate:740f60736079669e38ab8743bcc7f1fa:86c704f90b4defdba04ded1ee538922d:54fad76a2215733f4713e9475090528c$",
+      "textureFileName": "CoinFallAnimationSmall_00-hd.png"
+    }
+  }
+]

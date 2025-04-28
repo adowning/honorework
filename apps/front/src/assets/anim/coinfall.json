@@ -1,0 +1,256 @@
+{
+  "frames": [
+    {
+      "filename": "CoinFallAnimationSmall_00/CoinFallAnimationSmall_00-hd.png",
+      "frame": {
+        "x": null,
+        "y": 266,
+        "w": null,
+        "h": 45
+      },
+      "rotated": false,
+      "trimmed": false,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": null,
+        "h": 45
+      },
+      "sourceSize": {
+        "w": null,
+        "h": 45
+      }
+    },
+    {
+      "filename": "CoinFallAnimationSmall_00/CoinFallAnimationSmall_00-hd.png",
+      "frame": {
+        "x": null,
+        "y": 313,
+        "w": null,
+        "h": 45
+      },
+      "rotated": false,
+      "trimmed": false,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": null,
+        "h": 45
+      },
+      "sourceSize": {
+        "w": null,
+        "h": 45
+      }
+    },
+    {
+      "filename": "CoinFallAnimationSmall_00/CoinFallAnimationSmall_00-hd.png",
+      "frame": {
+        "x": null,
+        "y": 180,
+        "w": null,
+        "h": 45
+      },
+      "rotated": true,
+      "trimmed": false,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": null,
+        "h": 45
+      },
+      "sourceSize": {
+        "w": null,
+        "h": 45
+      }
+    },
+    {
+      "filename": "CoinFallAnimationSmall_00/CoinFallAnimationSmall_00-hd.png",
+      "frame": {
+        "x": null,
+        "y": 145,
+        "w": null,
+        "h": 45
+      },
+      "rotated": true,
+      "trimmed": false,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": null,
+        "h": 45
+      },
+      "sourceSize": {
+        "w": null,
+        "h": 45
+      }
+    },
+    {
+      "filename": "CoinFallAnimationSmall_00/CoinFallAnimationSmall_00-hd.png",
+      "frame": {
+        "x": null,
+        "y": 81,
+        "w": null,
+        "h": 45
+      },
+      "rotated": true,
+      "trimmed": false,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": null,
+        "h": 45
+      },
+      "sourceSize": {
+        "w": null,
+        "h": 45
+      }
+    },
+    {
+      "filename": "CoinFallAnimationSmall_00/CoinFallAnimationSmall_00-hd.png",
+      "frame": {
+        "x": null,
+        "y": 18,
+        "w": null,
+        "h": 45
+      },
+      "rotated": true,
+      "trimmed": false,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": null,
+        "h": 45
+      },
+      "sourceSize": {
+        "w": null,
+        "h": 45
+      }
+    },
+    {
+      "filename": "CoinFallAnimationSmall_00/CoinFallAnimationSmall_00-hd.png",
+      "frame": {
+        "x": null,
+        "y": 1,
+        "w": null,
+        "h": 45
+      },
+      "rotated": true,
+      "trimmed": false,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": null,
+        "h": 45
+      },
+      "sourceSize": {
+        "w": null,
+        "h": 45
+      }
+    },
+    {
+      "filename": "CoinFallAnimationSmall_00/CoinFallAnimationSmall_00-hd.png",
+      "frame": {
+        "x": null,
+        "y": 37,
+        "w": null,
+        "h": 45
+      },
+      "rotated": true,
+      "trimmed": false,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": null,
+        "h": 45
+      },
+      "sourceSize": {
+        "w": null,
+        "h": 45
+      }
+    },
+    {
+      "filename": "CoinFallAnimationSmall_00/CoinFallAnimationSmall_00-hd.png",
+      "frame": {
+        "x": null,
+        "y": 56,
+        "w": null,
+        "h": 45
+      },
+      "rotated": true,
+      "trimmed": false,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": null,
+        "h": 45
+      },
+      "sourceSize": {
+        "w": null,
+        "h": 45
+      }
+    },
+    {
+      "filename": "CoinFallAnimationSmall_00/CoinFallAnimationSmall_00-hd.png",
+      "frame": {
+        "x": null,
+        "y": 112,
+        "w": null,
+        "h": 45
+      },
+      "rotated": true,
+      "trimmed": false,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": null,
+        "h": 45
+      },
+      "sourceSize": {
+        "w": null,
+        "h": 45
+      }
+    },
+    {
+      "filename": "CoinFallAnimationSmall_00/CoinFallAnimationSmall_00-hd.png",
+      "frame": {
+        "x": null,
+        "y": 223,
+        "w": null,
+        "h": 45
+      },
+      "rotated": true,
+      "trimmed": false,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": null,
+        "h": 45
+      },
+      "sourceSize": {
+        "w": null,
+        "h": 45
+      }
+    },
+    {
+      "filename": "CoinFallAnimationSmall_00/CoinFallAnimationSmall_00-hd.png",
+      "frame": {
+        "x": null,
+        "y": 360,
+        "w": null,
+        "h": 45
+      },
+      "rotated": false,
+      "trimmed": false,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": null,
+        "h": 45
+      },
+      "sourceSize": {
+        "w": null,
+        "h": 45
+      }
+    }
+  ]
+}

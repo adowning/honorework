@@ -1,0 +1,72 @@
+{
+    "compilerOptions": {
+        "target": "es2022",
+        "module": "es2022",
+        "moduleResolution": "Node",
+        "rootDir": "./src",
+        "outDir": "./dist",
+        "strict": true,
+        "esModuleInterop": true,
+        "experimentalDecorators": true,
+        "emitDecoratorMetadata": true,
+        "skipLibCheck": true,
+        "forceConsistentCasingInFileNames": true,
+        "resolveJsonModule": true,
+        "types": [
+            "node"
+        ],
+        "baseUrl": ".",
+        "paths": {
+            "@/*": [
+                "src/*"
+            ]
+        }
+    },
+    "include": [
+        "src/**/*"
+    ],
+    "exclude": [
+        "node_modules",
+        "dist",
+        "tests"
+    ]
+}
+// {
+//     "compilerOptions": {
+//         "module": "ESNext",
+//         "target": "ESNext",
+//         // "declaration": true,
+//         // "declarationMap": true,
+//         "composite": true,
+//         "noImplicitAny": false,
+//         "importHelpers": true,
+//         "allowSyntheticDefaultImports": true,
+//         "sourceMap": true,
+//         "strict": true,
+//         "skipLibCheck": true,
+//         "strictPropertyInitialization": false,
+//         "forceConsistentCasingInFileNames": true,
+//         "experimentalDecorators": true,
+//         "emitDecoratorMetadata": true,
+//         "esModuleInterop": true,
+//         "outDir": "./dist",
+//         "rootDir": "./src",
+//         "types": [
+//             "node",
+//             "bun"
+//         ]
+//     },
+//     "include": [
+//         "src/**/*",
+//         "./src/types"
+//     ],
+//     "exclude": [
+//         "node_modules",
+//         "dist",
+//         "prisma",
+//         "./src/classes/**",
+//         "./src/classes",
+//         "src/classes/*",
+//         "src/classes*"
+//     ]
+// }

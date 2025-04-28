@@ -1,0 +1,125 @@
+{
+  "frames": [
+
+    {
+      "filename": "Flash 57_ образец 10000",
+      "frame": { "x": 0, "y": 0, "w": 787, "h": 76 },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": { "x": 0, "y": 0, "w": 787, "h": 79 },
+      "sourceSize": { "w": 787, "h": 79 }
+    },
+    {
+      "filename": "Flash 57_ образец 10001",
+      "frame": { "x": 0, "y": 76, "w": 787, "h": 71 },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": { "x": 0, "y": 2, "w": 787, "h": 79 },
+      "sourceSize": { "w": 787, "h": 79 }
+    },
+    {
+      "filename": "Flash 57_ образец 10002",
+      "frame": { "x": 0, "y": 147, "w": 787, "h": 67 },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": { "x": 0, "y": 4, "w": 787, "h": 79 },
+      "sourceSize": { "w": 787, "h": 79 }
+    },
+    {
+      "filename": "Flash 57_ образец 10003",
+      "frame": { "x": 0, "y": 214, "w": 787, "h": 63 },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": { "x": 0, "y": 5, "w": 787, "h": 79 },
+      "sourceSize": { "w": 787, "h": 79 }
+    },
+    {
+      "filename": "Flash 57_ образец 10004",
+      "frame": { "x": 0, "y": 277, "w": 787, "h": 66 },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": { "x": 0, "y": 0, "w": 787, "h": 79 },
+      "sourceSize": { "w": 787, "h": 79 }
+    },
+    {
+      "filename": "Flash 57_ образец 10005",
+      "frame": { "x": 0, "y": 343, "w": 787, "h": 66 },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": { "x": 0, "y": 0, "w": 787, "h": 79 },
+      "sourceSize": { "w": 787, "h": 79 }
+    },
+    {
+      "filename": "Flash 57_ образец 10006",
+      "frame": { "x": 0, "y": 409, "w": 787, "h": 66 },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": { "x": 0, "y": 0, "w": 787, "h": 79 },
+      "sourceSize": { "w": 787, "h": 79 }
+    },
+    {
+      "filename": "Flash 57_ образец 10007",
+      "frame": { "x": 0, "y": 475, "w": 787, "h": 66 },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": { "x": 0, "y": 0, "w": 787, "h": 79 },
+      "sourceSize": { "w": 787, "h": 79 }
+    },
+    {
+      "filename": "Flash 57_ образец 10008",
+      "frame": { "x": 0, "y": 541, "w": 787, "h": 67 },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": { "x": 0, "y": 0, "w": 787, "h": 79 },
+      "sourceSize": { "w": 787, "h": 79 }
+    },
+    {
+      "filename": "Flash 57_ образец 10009",
+      "frame": { "x": 0, "y": 608, "w": 787, "h": 70 },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": { "x": 0, "y": 0, "w": 787, "h": 79 },
+      "sourceSize": { "w": 787, "h": 79 }
+    },
+    {
+      "filename": "Flash 57_ образец 10010",
+      "frame": { "x": 0, "y": 678, "w": 787, "h": 73 },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": { "x": 0, "y": 0, "w": 787, "h": 79 },
+      "sourceSize": { "w": 787, "h": 79 }
+    },
+    {
+      "filename": "Flash 57_ образец 10011",
+      "frame": { "x": 0, "y": 751, "w": 787, "h": 76 },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": { "x": 0, "y": 0, "w": 787, "h": 79 },
+      "sourceSize": { "w": 787, "h": 79 }
+    },
+    {
+      "filename": "Flash 57_ образец 10012",
+      "frame": { "x": 0, "y": 827, "w": 786, "h": 79 },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": { "x": 0, "y": 0, "w": 787, "h": 79 },
+      "sourceSize": { "w": 787, "h": 79 }
+    },
+    {
+      "filename": "Flash 57_ образец 10013",
+      "frame": { "x": 0, "y": 0, "w": 787, "h": 76 },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": { "x": 0, "y": 0, "w": 787, "h": 79 },
+      "sourceSize": { "w": 787, "h": 79 }
+    }
+  ],
+  "meta": {
+    "app": "Adobe Flash CS6",
+    "version": "12.0.0.481",
+    "image": "flash.png",
+    "format": "RGBA8888",
+    "size": { "w": 1024, "h": 1024 },
+    "scale": "1"
+  }
+}

@@ -1,0 +1,276 @@
+{
+  "image": "premiumItems___boosts___bronzeVaultSpine___bronzeBoost.png",
+  "size": {
+    "w": 782,
+    "h": 782
+  },
+  "format": "RGBA8888",
+  "filter": "Linear,Linear",
+  "repeat": "none",
+  "frames": {
+    "vaultIcon-0001": {
+      "rotate": false,
+      "xy": [2, 522],
+      "size": [128, 128],
+      "orig": [128, 128],
+      "offset": [0, 0],
+      "index": -1
+    },
+    "vaultIcon-0002": {
+      "rotate": false,
+      "xy": [132, 652],
+      "size": [128, 128],
+      "orig": [128, 128],
+      "offset": [0, 0],
+      "index": -1
+    },
+    "vaultIcon-0003": {
+      "rotate": false,
+      "xy": [2, 392],
+      "size": [128, 128],
+      "orig": [128, 128],
+      "offset": [0, 0],
+      "index": -1
+    },
+    "vaultIcon-0004": {
+      "rotate": false,
+      "xy": [2, 392],
+      "size": [128, 128],
+      "orig": [128, 128],
+      "offset": [0, 0],
+      "index": -1
+    },
+    "vaultIcon-0005": {
+      "rotate": false,
+      "xy": [132, 522],
+      "size": [128, 128],
+      "orig": [128, 128],
+      "offset": [0, 0],
+      "index": -1
+    },
+    "vaultIcon-0006": {
+      "rotate": false,
+      "xy": [262, 652],
+      "size": [128, 128],
+      "orig": [128, 128],
+      "offset": [0, 0],
+      "index": -1
+    },
+    "vaultIcon-0007": {
+      "rotate": false,
+      "xy": [2, 262],
+      "size": [128, 128],
+      "orig": [128, 128],
+      "offset": [0, 0],
+      "index": -1
+    },
+    "vaultIcon-0008": {
+      "rotate": false,
+      "xy": [132, 392],
+      "size": [128, 128],
+      "orig": [128, 128],
+      "offset": [0, 0],
+      "index": -1
+    },
+    "vaultIcon-0009": {
+      "rotate": false,
+      "xy": [132, 392],
+      "size": [128, 128],
+      "orig": [128, 128],
+      "offset": [0, 0],
+      "index": -1
+    },
+    "vaultIcon-0010": {
+      "rotate": false,
+      "xy": [262, 522],
+      "size": [128, 128],
+      "orig": [128, 128],
+      "offset": [0, 0],
+      "index": -1
+    },
+    "vaultIcon-0011": {
+      "rotate": false,
+      "xy": [392, 652],
+      "size": [128, 128],
+      "orig": [128, 128],
+      "offset": [0, 0],
+      "index": -1
+    },
+    "vaultIcon-0012": {
+      "rotate": false,
+      "xy": [2, 132],
+      "size": [128, 128],
+      "orig": [128, 128],
+      "offset": [0, 0],
+      "index": -1
+    },
+    "vaultIcon-0013": {
+      "rotate": false,
+      "xy": [132, 262],
+      "size": [128, 128],
+      "orig": [128, 128],
+      "offset": [0, 0],
+      "index": -1
+    },
+    "vaultIcon-0014": {
+      "rotate": false,
+      "xy": [262, 392],
+      "size": [128, 128],
+      "orig": [128, 128],
+      "offset": [0, 0],
+      "index": -1
+    },
+    "vaultIcon-0015": {
+      "rotate": false,
+      "xy": [392, 522],
+      "size": [128, 128],
+      "orig": [128, 128],
+      "offset": [0, 0],
+      "index": -1
+    },
+    "vaultIcon-0016": {
+      "rotate": false,
+      "xy": [522, 652],
+      "size": [128, 128],
+      "orig": [128, 128],
+      "offset": [0, 0],
+      "index": -1
+    },
+    "vaultIcon-0017": {
+      "rotate": false,
+      "xy": [2, 2],
+      "size": [128, 128],
+      "orig": [128, 128],
+      "offset": [0, 0],
+      "index": -1
+    },
+    "vaultIcon-0018": {
+      "rotate": false,
+      "xy": [132, 132],
+      "size": [128, 128],
+      "orig": [128, 128],
+      "offset": [0, 0],
+      "index": -1
+    },
+    "vaultIcon-0019": {
+      "rotate": false,
+      "xy": [262, 262],
+      "size": [128, 128],
+      "orig": [128, 128],
+      "offset": [0, 0],
+      "index": -1
+    },
+    "vaultIcon-0020": {
+      "rotate": false,
+      "xy": [392, 392],
+      "size": [128, 128],
+      "orig": [128, 128],
+      "offset": [0, 0],
+      "index": -1
+    },
+    "vaultIcon-0021": {
+      "rotate": false,
+      "xy": [522, 522],
+      "size": [128, 128],
+      "orig": [128, 128],
+      "offset": [0, 0],
+      "index": -1
+    },
+    "vaultIcon-0022": {
+      "rotate": false,
+      "xy": [652, 652],
+      "size": [128, 128],
+      "orig": [128, 128],
+      "offset": [0, 0],
+      "index": -1
+    },
+    "vaultIcon-0023": {
+      "rotate": false,
+      "xy": [132, 2],
+      "size": [128, 128],
+      "orig": [128, 128],
+      "offset": [0, 0],
+      "index": -1
+    },
+    "vaultIcon-0024": {
+      "rotate": false,
+      "xy": [262, 132],
+      "size": [128, 128],
+      "orig": [128, 128],
+      "offset": [0, 0],
+      "index": -1
+    },
+    "vaultIcon-0025": {
+      "rotate": false,
+      "xy": [392, 262],
+      "size": [128, 128],
+      "orig": [128, 128],
+      "offset": [0, 0],
+      "index": -1
+    },
+    "vaultIcon-0026": {
+      "rotate": false,
+      "xy": [522, 392],
+      "size": [128, 128],
+      "orig": [128, 128],
+      "offset": [0, 0],
+      "index": -1
+    },
+    "vaultIcon-0027": {
+      "rotate": false,
+      "xy": [652, 522],
+      "size": [128, 128],
+      "orig": [128, 128],
+      "offset": [0, 0],
+      "index": -1
+    },
+    "vaultIcon-0028": {
+      "rotate": false,
+      "xy": [262, 2],
+      "size": [128, 128],
+      "orig": [128, 128],
+      "offset": [0, 0],
+      "index": -1
+    },
+    "vaultIcon-0029": {
+      "rotate": false,
+      "xy": [392, 132],
+      "size": [128, 128],
+      "orig": [128, 128],
+      "offset": [0, 0],
+      "index": -1
+    },
+    "vaultIcon-0030": {
+      "rotate": false,
+      "xy": [522, 262],
+      "size": [128, 128],
+      "orig": [128, 128],
+      "offset": [0, 0],
+      "index": -1
+    },
+    "vaultIcon-0031": {
+      "rotate": false,
+      "xy": [652, 392],
+      "size": [128, 128],
+      "orig": [128, 128],
+      "offset": [0, 0],
+      "index": -1
+    },
+    "vaultIcon-0032": {
+      "rotate": false,
+      "xy": [392, 2],
+      "size": [128, 128],
+      "orig": [128, 128],
+      "offset": [0, 0],
+      "index": -1
+    },
+    "vaultIcon-0033": {
+      "rotate": false,
+      "xy": [2, 652],
+      "size": [128, 128],
+      "orig": [128, 128],
+      "offset": [0, 0],
+      "index": -1
+    }
+  }
+}

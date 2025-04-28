@@ -1,0 +1,584 @@
+{
+  "frames": {
+    "BihourlyBonus_0000.avif": {
+      "frame": {
+        "x": 1,
+        "y": 1105,
+        "w": 151,
+        "h": 122
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 9,
+        "y": 14,
+        "w": 151,
+        "h": 122
+      },
+      "sourceSize": {
+        "w": 174,
+        "h": 136
+      }
+    },
+    "BihourlyBonus_0001.avif": {
+      "frame": {
+        "x": 299,
+        "y": 367,
+        "w": 151,
+        "h": 121
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 9,
+        "y": 15,
+        "w": 151,
+        "h": 121
+      },
+      "sourceSize": {
+        "w": 174,
+        "h": 136
+      }
+    },
+    "BihourlyBonus_0002.avif": {
+      "frame": {
+        "x": 1,
+        "y": 489,
+        "w": 151,
+        "h": 121
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 9,
+        "y": 15,
+        "w": 151,
+        "h": 121
+      },
+      "sourceSize": {
+        "w": 174,
+        "h": 136
+      }
+    },
+    "BihourlyBonus_0003.avif": {
+      "frame": {
+        "x": 154,
+        "y": 490,
+        "w": 150,
+        "h": 121
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 10,
+        "y": 15,
+        "w": 150,
+        "h": 121
+      },
+      "sourceSize": {
+        "w": 174,
+        "h": 136
+      }
+    },
+    "BihourlyBonus_0004.avif": {
+      "frame": {
+        "x": 306,
+        "y": 490,
+        "w": 150,
+        "h": 121
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 10,
+        "y": 15,
+        "w": 150,
+        "h": 121
+      },
+      "sourceSize": {
+        "w": 174,
+        "h": 136
+      }
+    },
+    "BihourlyBonus_0005.avif": {
+      "frame": {
+        "x": 1,
+        "y": 612,
+        "w": 149,
+        "h": 121
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 10,
+        "y": 15,
+        "w": 149,
+        "h": 121
+      },
+      "sourceSize": {
+        "w": 174,
+        "h": 136
+      }
+    },
+    "BihourlyBonus_0006.avif": {
+      "frame": {
+        "x": 152,
+        "y": 613,
+        "w": 149,
+        "h": 121
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 10,
+        "y": 15,
+        "w": 149,
+        "h": 121
+      },
+      "sourceSize": {
+        "w": 174,
+        "h": 136
+      }
+    },
+    "BihourlyBonus_0007.avif": {
+      "frame": {
+        "x": 303,
+        "y": 613,
+        "w": 149,
+        "h": 121
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 10,
+        "y": 15,
+        "w": 149,
+        "h": 121
+      },
+      "sourceSize": {
+        "w": 174,
+        "h": 136
+      }
+    },
+    "BihourlyBonus_0008.avif": {
+      "frame": {
+        "x": 1,
+        "y": 735,
+        "w": 148,
+        "h": 121
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 10,
+        "y": 15,
+        "w": 148,
+        "h": 121
+      },
+      "sourceSize": {
+        "w": 174,
+        "h": 136
+      }
+    },
+    "BihourlyBonus_0009.avif": {
+      "frame": {
+        "x": 1,
+        "y": 1,
+        "w": 147,
+        "h": 120
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 11,
+        "y": 16,
+        "w": 147,
+        "h": 120
+      },
+      "sourceSize": {
+        "w": 174,
+        "h": 136
+      }
+    },
+    "BihourlyBonus_0010.avif": {
+      "frame": {
+        "x": 150,
+        "y": 1,
+        "w": 147,
+        "h": 120
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 11,
+        "y": 16,
+        "w": 147,
+        "h": 120
+      },
+      "sourceSize": {
+        "w": 174,
+        "h": 136
+      }
+    },
+    "BihourlyBonus_0011.avif": {
+      "frame": {
+        "x": 299,
+        "y": 1,
+        "w": 145,
+        "h": 120
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 12,
+        "y": 16,
+        "w": 145,
+        "h": 120
+      },
+      "sourceSize": {
+        "w": 174,
+        "h": 136
+      }
+    },
+    "BihourlyBonus_0012.avif": {
+      "frame": {
+        "x": 1,
+        "y": 123,
+        "w": 145,
+        "h": 120
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 12,
+        "y": 16,
+        "w": 145,
+        "h": 120
+      },
+      "sourceSize": {
+        "w": 174,
+        "h": 136
+      }
+    },
+    "BihourlyBonus_0013.avif": {
+      "frame": {
+        "x": 148,
+        "y": 123,
+        "w": 145,
+        "h": 120
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 12,
+        "y": 16,
+        "w": 145,
+        "h": 120
+      },
+      "sourceSize": {
+        "w": 174,
+        "h": 136
+      }
+    },
+    "BihourlyBonus_0014.avif": {
+      "frame": {
+        "x": 295,
+        "y": 123,
+        "w": 143,
+        "h": 120
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 13,
+        "y": 16,
+        "w": 143,
+        "h": 120
+      },
+      "sourceSize": {
+        "w": 174,
+        "h": 136
+      }
+    },
+    "BihourlyBonus_0015.avif": {
+      "frame": {
+        "x": 1,
+        "y": 245,
+        "w": 145,
+        "h": 120
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 12,
+        "y": 16,
+        "w": 145,
+        "h": 120
+      },
+      "sourceSize": {
+        "w": 174,
+        "h": 136
+      }
+    },
+    "BihourlyBonus_0016.avif": {
+      "frame": {
+        "x": 148,
+        "y": 245,
+        "w": 145,
+        "h": 120
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 12,
+        "y": 16,
+        "w": 145,
+        "h": 120
+      },
+      "sourceSize": {
+        "w": 174,
+        "h": 136
+      }
+    },
+    "BihourlyBonus_0017.avif": {
+      "frame": {
+        "x": 295,
+        "y": 245,
+        "w": 145,
+        "h": 120
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 12,
+        "y": 16,
+        "w": 145,
+        "h": 120
+      },
+      "sourceSize": {
+        "w": 174,
+        "h": 136
+      }
+    },
+    "BihourlyBonus_0018.avif": {
+      "frame": {
+        "x": 1,
+        "y": 367,
+        "w": 147,
+        "h": 120
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 11,
+        "y": 16,
+        "w": 147,
+        "h": 120
+      },
+      "sourceSize": {
+        "w": 174,
+        "h": 136
+      }
+    },
+    "BihourlyBonus_0019.avif": {
+      "frame": {
+        "x": 150,
+        "y": 367,
+        "w": 147,
+        "h": 120
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 11,
+        "y": 16,
+        "w": 147,
+        "h": 120
+      },
+      "sourceSize": {
+        "w": 174,
+        "h": 136
+      }
+    },
+    "BihourlyBonus_0020.avif": {
+      "frame": {
+        "x": 151,
+        "y": 736,
+        "w": 148,
+        "h": 121
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 10,
+        "y": 15,
+        "w": 148,
+        "h": 121
+      },
+      "sourceSize": {
+        "w": 174,
+        "h": 136
+      }
+    },
+    "BihourlyBonus_0021.avif": {
+      "frame": {
+        "x": 301,
+        "y": 736,
+        "w": 149,
+        "h": 121
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 10,
+        "y": 15,
+        "w": 149,
+        "h": 121
+      },
+      "sourceSize": {
+        "w": 174,
+        "h": 136
+      }
+    },
+    "BihourlyBonus_0022.avif": {
+      "frame": {
+        "x": 1,
+        "y": 859,
+        "w": 149,
+        "h": 121
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 10,
+        "y": 15,
+        "w": 149,
+        "h": 121
+      },
+      "sourceSize": {
+        "w": 174,
+        "h": 136
+      }
+    },
+    "BihourlyBonus_0023.avif": {
+      "frame": {
+        "x": 152,
+        "y": 859,
+        "w": 149,
+        "h": 121
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 10,
+        "y": 15,
+        "w": 149,
+        "h": 121
+      },
+      "sourceSize": {
+        "w": 174,
+        "h": 136
+      }
+    },
+    "BihourlyBonus_0024.avif": {
+      "frame": {
+        "x": 303,
+        "y": 859,
+        "w": 150,
+        "h": 121
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 10,
+        "y": 15,
+        "w": 150,
+        "h": 121
+      },
+      "sourceSize": {
+        "w": 174,
+        "h": 136
+      }
+    },
+    "BihourlyBonus_0025.avif": {
+      "frame": {
+        "x": 1,
+        "y": 982,
+        "w": 150,
+        "h": 121
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 10,
+        "y": 15,
+        "w": 150,
+        "h": 121
+      },
+      "sourceSize": {
+        "w": 174,
+        "h": 136
+      }
+    },
+    "BihourlyBonus_0026.avif": {
+      "frame": {
+        "x": 153,
+        "y": 982,
+        "w": 151,
+        "h": 121
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 9,
+        "y": 15,
+        "w": 151,
+        "h": 121
+      },
+      "sourceSize": {
+        "w": 174,
+        "h": 136
+      }
+    },
+    "BihourlyBonus_0027.avif": {
+      "frame": {
+        "x": 306,
+        "y": 982,
+        "w": 151,
+        "h": 121
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 9,
+        "y": 15,
+        "w": 151,
+        "h": 121
+      },
+      "sourceSize": {
+        "w": 174,
+        "h": 136
+      }
+    },
+    "BihourlyBonus_0028.avif": {
+      "frame": {
+        "x": 154,
+        "y": 1105,
+        "w": 151,
+        "h": 122
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 9,
+        "y": 14,
+        "w": 151,
+        "h": 122
+      },
+      "sourceSize": {
+        "w": 174,
+        "h": 136
+      }
+    }
+  }
+}
