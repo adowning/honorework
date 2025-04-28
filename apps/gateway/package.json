@@ -24,6 +24,7 @@
   },
   "scripts": {
     "dev": "bun run  src/index.ts --watch --elide 500",
-    "m:gen": "pnpm mikro-orm schema:create --dump"
+    "m:gen": "bunx mikro-orm schema:create --dump"
+  },
+  "packageManager": "bun@1.2.10"
   }
-}

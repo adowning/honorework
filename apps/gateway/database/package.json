@@ -1,5 +1,6 @@
 {
   "name": "@cashflow/database",
+  "packageManager": "bun@1.2.10",
   "main": "src/index.ts",
   "type": "module",
   "exports": {
