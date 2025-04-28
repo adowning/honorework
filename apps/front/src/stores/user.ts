@@ -1,22 +1,26 @@
 import { hydrateStores, store } from '@/stores'
 import { setToken as _setToken, getToken, removeToken } from '@/utils/cache/cookies'
 import Cookies from 'js-cookie'
-import { useLoading } from '@/composables/useLoading'
+// import { useLoading } from '@/composables/useLoading'
 import type * as SignIn from '@/interface/signin'
-import type * as SignUp from '@/interface/signup'
+// import type * as SignUp from '@/interface/signup'
 // import type * as User from "@/interface/user";
 import { authController } from '../sdk/authModule'
 import { useNotificationStore } from './notifications'
 import { handleException } from './exception'
 
-import { useSocketStore } from './socket'
+// import { useSocketStore } from './socket'
 // import type { IUser } from '@/sdk/_types/src/prisma/types'
-import { useCashflowStore } from './cashflow.store'
+// import { useCashflowStore } from './cashflow.store'
+// import { User } from '@/types/user'
+// import { Network } from '@/libs/cashflowClient'
+// import { NETWORK } from '@/utils/socket/NetworkCfg'
+// import { CashflowRequestName } from '@/libs/cashflowClient/client/types'
+// import { SENDTYPE } from '@/libs/cashflowClient/NetCfg'
+import { NETWORK } from '@/net/NetworkCfg'
+import { Network } from '@/net/Network'
 import { User } from '@/types/user'
-import { Network } from '@/libs/cashflowClient'
-import { NETWORK } from '@/utils/socket/NetworkCfg'
-import { CashflowRequestName } from '@/libs/cashflowClient/client/types'
-import { SENDTYPE } from '@/libs/cashflowClient/NetCfg'
+import { GetUserBalance, GetUserBalanceResponseData } from '@/interface/user'
 const expScale = [1, 10, 100, 1000, 10000, 100000, 1000000, 10000000, 100000000, 1000000000]
 export const useUserStore = defineStore(
   'user',
@@ -27,6 +31,7 @@ export const useUserStore = defineStore(
     const roles = ref<string[]>([])
     const success = ref<boolean>(false)
     const errMessage = ref<string>('')
+    const userBalance = ref<GetUserBalance>()
 
     const percentOfVipLevel = computed(() => {
       if (currentUser.value === undefined) return 0
@@ -35,7 +40,13 @@ export const useUserStore = defineStore(
       console.log(currentUser.value.vipPoints / nextXpLevel)
       return (15 / nextXpLevel) * 100
     })
-
+    const setUserBalance = (_userBalance: GetUserBalance) => {
+      console.log('金额', userBalance)
+      userBalance.value = _userBalance;
+    }
+    const getUserBalance = () => {
+     return userBalance 
+    }
     const setToken = (value: string) => {
       _setToken(value)
       token.value = value
@@ -122,24 +133,24 @@ export const useUserStore = defineStore(
 
     const login = async (name: string, password: string): Promise<boolean> => {
       // const { stopLoading } = useLoading()
-      const cashflowStore = useCashflowStore()
-      const socketStore = useSocketStore()
-      const notificationStore = useNotificationStore()
-      // const result = await authController.login({}, { username: name, password })
-      await cashflowStore.connect(name, password)
-      if (result.status === 401) {
-        notificationStore.addNotification('Invalid credentials', 'error')
-        return false
-      }
-      if (typeof result.access_token !== 'string') return false
-      setToken(result.access_token)
-      Cookies.set('laravel_session', result.access_token)
-      localStorage.setItem('access_token', result.access_token)
-      const hydrated = await hydrateStores()
-      localStorage.setItem('isAuthenticated', hydrated.toString())
-      isAuthenticated.value = hydrated
-      socketStore.dispatchSocketConnect()
-      console.log('user hydrated ? ', hydrated)
+      // const cashflowStore = useCashflowStore()
+      // const socketStore = useSocketStore()
+      // const notificationStore = useNotificationStore()
+      // // const result = await authController.login({}, { username: name, password })
+      // await cashflowStore.connect(name, password)
+      // if (result.status === 401) {
+      //   notificationStore.addNotification('Invalid credentials', 'error')
+      //   return false
+      // }
+      // if (typeof result.access_token !== 'string') return false
+      // setToken(result.access_token)
+      // Cookies.set('laravel_session', result.access_token)
+      // localStorage.setItem('access_token', result.access_token)
+      // const hydrated = await hydrateStores()
+      // localStorage.setItem('isAuthenticated', hydrated.toString())
+      // isAuthenticated.value = hydrated
+      // socketStore.dispatchSocketConnect()
+      // console.log('user hydrated ? ', hydrated)
       // setTimeout(() => {
       //   console.log('delaying 5k to watch loading')
       //   router.push('/home')
@@ -147,11 +158,40 @@ export const useUserStore = defineStore(
       // }, 5000)
       return true
     }
-
+    // async dispatchSetUserCurrency(currency:string) {
+    const dispatchSetUserCurrency = async (currency:string) =>{
+      // this.setSuccess(false);
+      const route: string = NETWORK.PERSONAL_INFO_PAGE.SET_USER_CURRENCY;
+      const network: Network = Network.getInstance();
+      // response call back function
+      const next = (response: any) => {
+        if (response.code == 200) {
+          setSuccess(true);
+        } else {
+          setErrorMessage(handleException(response.code));
+        }
+      }
+      await network.sendMsg(route, {currency_type:currency}, next, 1);
+    }
+    const dispatchUserBalance = async () =>{
+      setSuccess(false);
+      const route: string = NETWORK.PERSONAL_INFO_PAGE.USER_BALANCE;
+      const network: Network = Network.getInstance();
+      // response call back function
+      const next = (response: GetUserBalanceResponseData) => {
+        if (response.code == 200) {
+          setSuccess(true);
+          setUserBalance(response.data);
+        } else {
+          setErrorMessage(handleException(response.code));
+        }
+      }
+      await network.sendMsg(route, {}, next, 1, 4);
+    }
     const login2 = async (msg: SignIn.SigninRequestData) => {
       const notificationStore = useNotificationStore()
       setSuccess(false)
-      const route: CashflowRequestName = NETWORK.LOGIN.LOGIN
+      const route: string = NETWORK.LOGIN.LOGIN
       const network: Network = Network.getInstance()
 
       // response call back function
@@ -171,7 +211,7 @@ export const useUserStore = defineStore(
           setErrorMessage(handleException(response.code))
         }
       }
-      await network.sendMsg(route, msg, next, SENDTYPE.AUTH)
+      await network.sendMsg(route, msg, next, 2)
     }
     const dispatchSignout = async (): Promise<void> => {
       removeToken()
@@ -181,11 +221,14 @@ export const useUserStore = defineStore(
       dispatchSignout,
       currentUser,
       setUserGameStat,
+      dispatchUserBalance,
       token,
       updateCurrentUserBalance,
       roles,
       setUserInfo,
       register,
+      getUserBalance,
+      dispatchSetUserCurrency,
       login,
       // username,
       login2,

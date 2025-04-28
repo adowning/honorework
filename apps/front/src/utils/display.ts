@@ -256,3 +256,5 @@ export function useDisplay(
 
     return { ...display, displayClasses, mobile }
 }
+
+export { mergeDeep, propsFactory, getCurrentInstanceName, SUPPORTS_TOUCH, IN_BROWSER }

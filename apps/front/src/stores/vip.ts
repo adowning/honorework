@@ -1,7 +1,7 @@
 import { defineStore } from 'pinia'
 import { ref, computed } from 'vue' // Import reactive functions
 import type * as Vip from '@/interface/vip'
-import { i18n } from '@/locale/index' // Assuming this path is correct and i18n is initialized
+// import { i18n } from '@/locale/index' // Assuming this path is correct and i18n is initialized
 import { Network } from '@/net/Network'
 import { NETWORK } from '@/net/NetworkCfg'
 // import * as Toast from "vue-toastification/dist/index.mjs"; // Replaced with Nuxt UI useToast if applicable
@@ -12,6 +12,7 @@ import { handleException } from './exception' // Assuming this path is correct
 // import WarningIcon from "@/components/global/notification/WarningIcon.vue";
 
 // If using Nuxt UI Pro, you would use:
+// import { useI18n } from 'vue-i18n'
 // const toast = useToast();
 
 export const useVipStore = defineStore('vip', () => {
@@ -66,6 +67,8 @@ export const useVipStore = defineStore('vip', () => {
   const getVipCycleawardList = computed(() => vipCycleawardList.value)
   const getVipLevelAward = computed(() => vipLevelAward.value)
   const getVipBetawardList = computed(() => vipBetawardList.value)
+
+  // const { t } = useI18n()
 
   // Actions converted to regular functions
   const setSuccess = (isSuccess: boolean) => {
@@ -137,17 +140,19 @@ export const useVipStore = defineStore('vip', () => {
   }
 
   // Reward collection prompt information  奖励领取提示信息
-  const alertMessage = (successMessage: Vip.SuccessMessageParams) => {
+  const alertMessage = (successMessage: Vip.SuccessMessageParams, message?: string) => {
     // If using Nuxt UI Pro, uncomment and use toast:
     // toast.add({
     //     title: successMessage.message,
     //     icon: successMessage.type == 1 ? 'i-heroicons-check-circle' : 'i-heroicons-exclamation-circle', // Example icons
     //     color: successMessage.type == 1 ? 'green' : 'red',
     //     timeout: 3000,
-    // });
+    // });    
     // Otherwise, implement your custom notification logic here
-    console.log('Alert Message:', successMessage.message, 'Type:', successMessage.type) // Placeholder
+    const text = message || successMessage.message
+    console.log('Alert Message:', text, 'Type:', successMessage.type) // Placeholder
   }
+
 
   // Get VIP check-in content
   async function dispatchVipSignIn() {
@@ -387,11 +392,17 @@ export const useVipStore = defineStore('vip', () => {
       // Note: response type is Vip.GetVipLevelAwardResponse in original, check if correct
       if (response.code == 200) {
         setSuccess(true)
-        alertMessage({ message: i18n.global.t('reward.success_text'), type: 1 })
+        alertMessage({
+          type: 1,
+          message: ''
+        }, 'reward.success_text')
         dispatchVipCycleawardList() // Call the action
       } else {
         setErrorMessage(handleException(response.code))
-        alertMessage({ message: response.message, type: 0 })
+        alertMessage({
+          type: 0,
+          message: ''
+        }, response.message)
       }
     }
     await network.sendMsg(route, data, next, 1)
@@ -431,11 +442,17 @@ export const useVipStore = defineStore('vip', () => {
       // Note: response type is Vip.GetVipLevelAwardResponse in original, check if correct
       if (response.code == 200) {
         setSuccess(true)
-        alertMessage({ message: i18n.global.t('reward.success_text'), type: 1 })
+        alertMessage({
+          type: 1,
+          message: ''
+        }, 'reward.success_text')
         dispatchVipLevelAward() // Call the action
       } else {
         setErrorMessage(handleException(response.code))
-        alertMessage({ message: response.message, type: 0 })
+        alertMessage({
+          type: 0,
+          message: ''
+        }, response.message)
       }
     }
     await network.sendMsg(route, data, next, 1)
@@ -475,11 +492,17 @@ export const useVipStore = defineStore('vip', () => {
       // Note: response type is Vip.GetVipLevelAwardResponse in original, check if correct
       if (response.code == 200) {
         setSuccess(true)
-        alertMessage({ message: i18n.global.t('reward.success_text'), type: 1 })
+        alertMessage({
+          type: 1,
+          message: ''
+        }, 'reward.success_text')
         dispatchVipBetawardList() // Call the action
       } else {
         setErrorMessage(handleException(response.code))
-        alertMessage({ message: response.message, type: 0 })
+        alertMessage({
+          type: 0,
+          message: ''
+        }, response.message)
       }
     }
     await network.sendMsg(route, data, next, 1)

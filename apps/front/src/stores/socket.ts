@@ -2,13 +2,17 @@ import { defineStore } from 'pinia'
 import { ref, computed } from 'vue'
 import Cookies from 'js-cookie'
 import { CacheKey } from '@/utils/cache-key'
+import { NETWORK } from '@/net/NetworkCfg'
+import { Network } from '@/net/Network'
+import { Network as Network1 } from '@/net/Network1'
+import { useAuthStore } from './auth'
 // import { NETWORK } from '@/utils/socket/NetworkCfg'
 // import { Network } from '@/utils/socket/network'
 
 export const createWebSocket = (route: string) => {
   console.log(`${import.meta.env.VITE_SOKET_URL}${route}?token=${Cookies.get(CacheKey.TOKEN)}`)
   const socket = new WebSocket(
-    `wss://hoy777.com/user/connect/ws`, //?token=${Cookies.get(CacheKey.TOKEN)}`,
+    `wss://mobile.cashflowcasino.com/api/setup?token=mock_token`, //?token=${Cookies.get(CacheKey.TOKEN)}`,
     // `${import.meta.env.VITE_SOKET_URL}${route}?token=${Cookies.get(CacheKey.TOKEN)}`,
   )
   return socket
@@ -47,38 +51,47 @@ export const useSocketStore = defineStore('socket', () => {
   function setSocketBalance(newSocketBalance: GetUserBalance) {
     socketBalance.value = newSocketBalance
   }
-
+  async function connected(x: any) {
+    console.log('connected ', x)
+  }
   // socket connect check
   async function dispatchSocketConnect() {
     console.log('dispatchSocketConnect')
-    // setSuccess(false)
-    // const route: string = NETWORK.WEB_SOCKET.SOCKET_CONNECT
-    // console.log(route)
-    // const network: Network = Network.getInstance()
-    // // network.connect()
-    // console.log('x')
-    // socket.value = createWebSocket(route)
-    // console.log(socket.value)
-    // if (socket.value) {
-    //   socket.value.onopen = handleOpen
-    //   socket.value.onmessage = handleMessage
-    //   socket.value.onerror = handleError
-    //   socket.value.onclose = handleClose
-    // }
+    setSuccess(false)
+    const route: string = NETWORK.WEB_SOCKET.SOCKET_CONNECT
+    console.log(route)
+    const network: Network = Network.getInstance()
+    const network1: Network1 = Network1.getInstance()
+    network1.connect(connected)
+    console.log('x')
+    socket.value = createWebSocket(route)
+    console.log(socket.value)
+    if (socket.value) {
+      socket.value.onopen = handleOpen
+      socket.value.onmessage = handleMessage
+      socket.value.onerror = handleError
+      socket.value.onclose = handleClose
+    }
   }
 
   function handleOpen() {
+    const authStore = useAuthStore()
     console.log('WebSocket connection established')
+    authStore.setIsAuthenticated(true)
   }
 
   function handleMessage(event: MessageEvent) {
-    console.log('Received message:', event.data)
+    // console.log('Received message:', event.data)
     try {
       const response = JSON.parse(event.data)
-      switch (response.mt) {
-        case 101:
-          setSocketBalance(response as GetUserBalance)
-          break
+      console.log(response)
+      if (response.onFundMessage !== undefined) {
+        console.log(response.onFundMessage.mt)
+        switch (response.onFundMessage.mt) {
+          case 101:
+            setSocketBalance(response.onFundMessage.data as GetUserBalance)
+            break
+        }
       }
     } catch (error) {
       console.error('Error parsing WebSocket message:', error)

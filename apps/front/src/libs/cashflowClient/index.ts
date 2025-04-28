@@ -332,7 +332,8 @@ export class Network {
     body: unknown,
     query: Record<string, string>,
   ): Promise<any> {
-    const url = new URL('https://api.cashflowcasino.com/api' + uri)
+    // const url = new URL('https://api.cashflowcasino.com/api' + uri)
+    const url = new URL('http://localhost:3001/' + uri)
     url.search = new URLSearchParams(query).toString()
     const token = localStorage.getItem('access_token')
     if (!token && !uri.includes('login') && !uri.includes('register'))

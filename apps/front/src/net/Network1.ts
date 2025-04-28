@@ -2,11 +2,12 @@ import { EventManager } from "./EventManager";
 import { EXITTYPE, Netcfg, SENDTYPE } from "./NetCfg";
 import './starx-wsclient.js';
 import Cookies from "js-cookie";
-import CacheKey from "@/constants/cacheKey";
+import {CacheKey} from "@/utils/cache-key";
 // import { TimerManager } from "../base/TimerManager";
-import { socketStore } from "@/store/socket";
-import { authStore } from "@/store/auth";
-import router from "@/router";
+import { useSocketStore } from "@/stores/socket";
+import { useAuthStore } from "@/stores/auth";
+import {router} from "@/router";
+import starx, { starxMsg } from "@/utils/socket/wsclient";
 
 const NETWORK_CODE:number = 200
 
@@ -108,7 +109,9 @@ export class Network {
             if (callBack) callBack(data);
         });
     }
-
+    private handshakeCallback(x:any) {
+        console.log(x)
+    }
     /**
      * pomelo建立连接，设定回调捆绑
      * @param host 
@@ -128,9 +131,11 @@ export class Network {
         //     connectcb: this.connectConnector.bind(this),
         // };
         let cfg: starxMsg = {
-            host: "wss://pix.kim",
+            // host: "wss://pix.kim",
+            host: "wss://mobile.cashflowcasino.com",
             port: port,
-            path: "/user/connect/ws",
+            path: "/api/setup",
+            handshakeCallback: this.handshakeCallback,
             connectcb: this.connectConnector.bind(this),
         };
         //属于异常断线重连，清理loading 清理发包记录
@@ -139,6 +144,7 @@ export class Network {
             this.sendCount = {};
         }
         this.wsdisconnect = false;
+        console.log(starx)
         starx.init(cfg);
     }
 
@@ -167,7 +173,8 @@ export class Network {
             case 'onKick':
                 console.log("ws 断线通知 onKick：", event);
                 if (event.value === 307) {
-                    const { dispatchSignout } = authStore();
+                    const authStore = useAuthStore()
+                    const dispatchSignout  = authStore.dispatchSignout
                     dispatchSignout();
                     router.push({ name: "Dashboard" });
                 }
@@ -252,7 +259,8 @@ export class Network {
     }
 
     public onFundMessage(msg: any) {
-        const { setSocketBalance } = socketStore();
+        const socketStore = useSocketStore()
+        const setSocketBalance  = socketStore.setSocketBalance
         setSocketBalance(msg.body);
     }
 

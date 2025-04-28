@@ -8,7 +8,7 @@ import LoginView from '@/views/LoginView.vue'
 // import { router } from './router'
 // import { loadingFadeOut } from 'virtual:app-loading'
 // import { EventManager } from './composables/EventManager'
-import { useCashflowStore } from './stores/cashflow.store'
+import { useAuthStore } from './stores/auth'
 import { useUserStore } from './stores/user'
 
 // const levelPopup = ref()
@@ -29,7 +29,7 @@ const { currentUser, vipLevel } = useUserStore()
 //   },
 //   levelPopup.value,
 // )
-const store = useCashflowStore()
+const store = useAuthStore()
 onMounted(async () => {
   stopLoading()
   console.log(isLoading.value)
@@ -66,7 +66,7 @@ onMounted(async () => {
 </script>
 
 <template>
-  <template v-if="(store.isConnected || !store.isNewConnection) && store.instance">
+  <template v-if="store.isAuthenticated">
     <DesktopSection v-if="!isMobile">
       <RouterView />
     </DesktopSection>
@@ -74,7 +74,7 @@ onMounted(async () => {
       <RouterView />
     </MobileSection>
   </template>
-  <template v-else-if="!store.isConnected">
+  <template v-else-if="!store.isAuthenticated">
     <LoginView />
   </template>
   <LevelUpPopup ref="levelPopup" v-if="showLevelUp" :vipLevel="currentUser.vipRankLevel" />

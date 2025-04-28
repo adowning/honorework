@@ -130,7 +130,7 @@ export class Network {
     // };
     let cfg: starxMsg = {
       // host: 'wss://pix.kim',
-      host: 'wss://hoy777.com',
+      host: '',
       port: 443,
       path: '/user/connect/ws',
       connectcb: this.connectConnector.bind(this),
@@ -254,7 +254,7 @@ export class Network {
     }
     return msg
   }
-
+  // onFundMessage{"mt":101,"data":{"bal":"0.5","cur":"MXN","op_type":-102}}
   public onFundMessage(msg: any) {
     const { setSocketBalance } = useSocketStore()
     setSocketBalance(msg.body)

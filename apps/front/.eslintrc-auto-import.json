@@ -324,6 +324,20 @@
     "balance": true,
     "refetch": true,
     "EventManager": true,
-    "eventobject": true
+    "eventobject": true,
+    "Breakpoint": true,
+    "DisplayBreakpoint": true,
+    "DisplayInstance": true,
+    "DisplayOptions": true,
+    "DisplayPlatform": true,
+    "DisplayProps": true,
+    "DisplaySymbol": true,
+    "DisplayThresholds": true,
+    "InternalDisplayOptions": true,
+    "SSROptions": true,
+    "breakpoints": true,
+    "createDisplay": true,
+    "makeDisplayProps": true,
+    "useDisplay": true
   }
 }

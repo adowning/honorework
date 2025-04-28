@@ -1,13 +1,192 @@
 <script lang="ts" setup>
 import { useLoading } from '@/composables/useLoading'
+import { useAppBarStore } from '@/stores/appBar'
+import { useAuthStore } from '@/stores/auth'
+import { useCurrencyStore } from '@/stores/currency'
+import { useNotificationStore } from '@/stores/notifications'
+import { useRefferalStore } from '@/stores/refferal'
+import { useSocketStore } from '@/stores/socket'
 import { useUserStore } from '@/stores/user'
-import { posthog } from '@/bootstrap'
+import { useVipStore } from '@/stores/vip'
+// import { posthog } from '@/bootstrap'
 import { loadingFadeOut } from 'virtual:app-loading'
 
 const { isLoading, withLoading, stopLoading } = useLoading()
 let x = 0
-posthog.capture('Login Page Viewed', { page: window.location.pathname })
+// posthog.capture('Login Page Viewed', { page: window.location.pathname })
 // var executed = false
+const authStore = useAuthStore()
+
+const { dispatchSignIn, dispatchSignUp, setNickNameDialogVisible, dispatchUserProfile, setAuthModalType, setAuthDialogVisible, getSuccess, getErrMessage } = authStore;
+const userStore = useUserStore()
+const notificationStore = useNotificationStore()
+const appBarStore = useAppBarStore()
+const refferalStore = useRefferalStore()
+const socketStore = useSocketStore()
+const currencyStore = useCurrencyStore()
+const vipStore = useVipStore()
+const { dispatchUserBalance } = userStore;
+const { dispatchVipInfo, dispatchVipLevels, dispatchVipLevelAward } = vipStore;
+const { setOverlayScrimShow } = appBarStore;
+const { setRefferalDialogShow } = refferalStore;
+const { dispatchSocketConnect } = socketStore;
+const { dispatchCurrencyList } = currencyStore
+const success = computed(() => getSuccess);
+const formData = reactive({
+  username: 'testuser',
+  password: 'testpassword',
+  confirm: 'testpassword',
+  faceIndex: 0,
+  loginErr: '',
+  passwErr: '',
+  agentCode: '',
+  promoCode: ''
+})
+const errMessage = ref()
+const currentPage = ref()
+const handleSignupFormSubmit = async () => {
+  isLoading.value = true
+
+
+  isLoading.value = true;
+  await withLoading(dispatchSignUp({
+    uid: formData.username,
+    password: formData.password,
+    referral_code: formData.promoCode,
+    browser: "",
+    device: "",
+    model: "",
+    brand: "",
+    imei: "",
+  }));
+
+  if (success.value) {
+    await withLoading(dispatchUserProfile())
+    await withLoading(dispatchUserBalance())
+    await withLoading(dispatchSocketConnect())
+    await withLoading(dispatchCurrencyList())
+
+    setAuthDialogVisible(false);
+    setNickNameDialogVisible(true);
+    // const toast = useToast();
+    notificationStore.addNotification('success', 'success')
+
+    // toast.success(t("signup.submit_result.success_text"), {
+    //   timeout: 3000,
+    //   closeOnClick: false,
+    //   pauseOnFocusLoss: false,
+    //   pauseOnHover: false,
+    //   draggable: false,
+    //   showCloseButtonOnHover: false,
+    //   hideProgressBar: true,
+    //   closeButton: "button",
+    //   icon: SuccessIcon,
+    //   rtl: false,
+    // });
+    console.log(process.env.NODE_ENV)
+    console.log(process.env.NODE_ENV)
+    // if (process.env.NODE_ENV == 'development') {
+    setTimeout(() => {
+      console.log('asdfasdf')
+
+      isLoading.value = false
+    }, 3000)
+    // } else {
+    //   isLoading.value = false
+
+    // }
+  } else {
+    console.log('wtf error')
+    isLoading.value = false
+
+    if (
+      errMessage.value ==
+      "The account you entered has been used by someone else, please input again"
+    ) {
+      currentPage.value = 'already regged'//PAGE_TYPE.ALREADY_REGISTERED;
+    } else {
+      // const toast = useToast();
+      notificationStore.addNotification('error', 'error')
+
+      // toast.success(errMessage.value, {
+      //   timeout: 3000,
+      //   closeOnClick: false,
+      //   pauseOnFocusLoss: false,
+      //   pauseOnHover: false,
+      //   draggable: false,
+      //   showCloseButtonOnHover: false,
+      //   hideProgressBar: true,
+      //   closeButton: "button",
+      //   icon: WarningIcon,
+      //   rtl: false,
+      // });
+    }
+    // }
+  }
+}
+
+const handleLoginFormSubmit = async () => {
+  isLoading.value = true;
+
+  const r = await withLoading(dispatchSignIn({
+    username: formData.username,
+    password: formData.password,
+  }))
+  console.log(r)
+  console.log(success.value)
+  if (r) {
+    await  withLoading(dispatchUserProfile())
+    await  withLoading(dispatchUserBalance())
+    await  withLoading(dispatchCurrencyList())
+    await  withLoading(dispatchVipInfo())
+    await  withLoading(dispatchVipLevels())
+    await  withLoading(dispatchVipLevelAward())
+    setOverlayScrimShow(false);
+    setRefferalDialogShow(true);
+    // const toast = useToast();
+    // toast.success("success_text", {
+    //   timeout: 3000,
+    //   closeOnClick: false,
+    //   pauseOnFocusLoss: false,
+    //   pauseOnHover: false,
+    //   draggable: false,
+    //   showCloseButtonOnHover: false,
+    //   hideProgressBar: true,
+    //   closeButton: "button",
+    //   icon: SuccessIcon,
+    //   rtl: false,
+    notificationStore.addNotification('success', 'success')
+
+    // });
+    setTimeout(() => {
+      setAuthModalType("");
+      setAuthDialogVisible(false);
+    }, 100);
+    await dispatchSocketConnect();
+    setTimeout(() => {
+      isLoading.value = false
+    }, 3000);
+  } else {
+    // const toast = useToast();
+    notificationStore.addNotification('error', 'error')
+
+    // toast.success("err_text", {
+    //   timeout: 3000,
+    //   closeOnClick: false,
+    //   pauseOnFocusLoss: false,
+    //   pauseOnHover: false,
+    //   draggable: false,
+    //   showCloseButtonOnHover: false,
+    //   hideProgressBar: true,
+    //   closeButton: "button",
+    //   icon: WarningIcon,
+    //   rtl: false,
+    // });
+  }
+
+  isLoading.value = false;
+};
+
 async function sendEmit1() {
   // posthog.capture('Form Submitted', { formData })
   const user = useUserStore()
@@ -42,15 +221,7 @@ async function register() {
   //   //   router.push('/login')
   // }
 }
-const formData = reactive({
-  username: 'ash',
-  password: 'asdfasdf',
-  confirm: 'asdfasdf',
-  faceIndex: 0,
-  loginErr: '',
-  passwErr: '',
-  agentCode: '',
-})
+
 onMounted(() => {
   stopLoading()
   loadingFadeOut()
@@ -58,15 +229,10 @@ onMounted(() => {
 </script>
 
 <template>
-  <div
-    v-if="!isLoading"
-    class="max-w-[520px] w-[100vw] mt-7 flex flex-col justify-center items-center"
-    style="height: 100vh; width: 100vw; max-width: 520px; justify-content: center"
-  >
-    <div
-      class="wrapper color-white flex-col justify-center w-full mx-0 px-0"
-      style="height: 100vh; width: 80vw; max-width: 520px; margin-auto"
-    >
+  <div v-if="!isLoading" class="max-w-[520px] w-[100vw] mt-7 flex flex-col justify-center items-center"
+    style="height: 100vh; width: 100vw; max-width: 520px; justify-content: center">
+    <div class="wrapper color-white flex-col justify-center w-full mx-0 px-0"
+      style="height: 100vh; width: 80vw; max-width: 520px; margin-auto">
       <Logo class="mb-52" />
       <div class="card-switch">
         <label class="switch">
@@ -77,54 +243,32 @@ onMounted(() => {
             <div class="flip-card__front">
               <div class="title">Log in</div>
               <div class="flip-card__form">
-                <input
-                  v-model="formData.username"
-                  type="required"
-                  placeholder="Username"
-                  name="username"
-                  class="flip-card__input"
-                />
-                <input
-                  v-model="formData.password"
-                  type="password"
-                  placeholder="Password"
-                  name="password"
-                  class="flip-card__input"
-                />
+                <input v-model="formData.username" type="required" placeholder="Username" name="username"
+                  class="flip-card__input" />
+                <input v-model="formData.password" type="password" placeholder="Password" name="password"
+                  class="flip-card__input" />
 
-                <button class="flip-card__btn" @click="sendEmit1">Lets go!</button>
+                <button class="flip-card__btn" @click="handleLoginFormSubmit">Lets go!</button>
               </div>
             </div>
             <div class="flip-card__back">
               <div class="title">Sign up</div>
               <div action="" class="flip-card__form">
-                <input
-                  v-model="formData.username"
-                  type="name"
-                  placeholder="Name"
-                  class="flip-card__input"
-                />
-                <input
-                  v-model="formData.password"
-                  type="password"
-                  placeholder="Password"
-                  name="password"
-                  class="flip-card__input"
-                />
-                <input
-                  v-model="formData.confirm"
-                  type="password"
-                  placeholder="Confirm"
-                  name="confirm"
-                  class="flip-card__input"
-                />
-                <button class="flip-card__btn" @click="register">Confirm!</button>
+                <input v-model="formData.username" type="name" placeholder="Name" class="flip-card__input" />
+                <input v-model="formData.password" type="password" placeholder="Password" name="password"
+                  class="flip-card__input" />
+                <input v-model="formData.confirm" type="password" placeholder="Confirm" name="confirm"
+                  class="flip-card__input" />
+                <button class="flip-card__btn" @click="handleSignupFormSubmit">Confirm!</button>
               </div>
             </div>
           </div>
         </label>
       </div>
     </div>
+  </div>
+  <div v-else>
+    <GlobalLoading />
   </div>
 </template>
 
@@ -229,19 +373,19 @@ onMounted(() => {
   transition: 0.3s;
 }
 
-.toggle:checked + .slider {
+.toggle:checked+.slider {
   background-color: var(--input-focus);
 }
 
-.toggle:checked + .slider:before {
+.toggle:checked+.slider:before {
   transform: translateX(30px);
 }
 
-.toggle:checked ~ .card-side:before {
+.toggle:checked~.card-side:before {
   text-decoration: none;
 }
 
-.toggle:checked ~ .card-side:after {
+.toggle:checked~.card-side:after {
   text-decoration: underline;
 }
 
@@ -262,11 +406,11 @@ onMounted(() => {
   margin-top: 16px;
 }
 
-.toggle:checked ~ .flip-card__inner {
+.toggle:checked~.flip-card__inner {
   transform: rotateY(180deg);
 }
 
-.toggle:checked ~ .flip-card__front {
+.toggle:checked~.flip-card__front {
   box-shadow: none;
 }
 

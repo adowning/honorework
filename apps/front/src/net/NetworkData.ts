@@ -1,4 +1,4 @@
-import CacheKey from "@/constants/cacheKey"
+import { CacheKey } from "@/utils/cache-key"
 import Cookies from "js-cookie"
 
 /**

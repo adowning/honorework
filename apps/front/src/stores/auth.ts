@@ -8,6 +8,7 @@ import { Network } from '@/net/Network'
 import { NetworkData } from '@/net/NetworkData'
 import { Netcfg } from '@/net/NetCfg'
 import { handleException } from './exception' // Assuming this path is correct
+import { router } from '@/router'
 
 export const useAuthStore = defineStore('auth', () => {
   // State properties converted to reactive references
@@ -69,7 +70,7 @@ export const useAuthStore = defineStore('auth', () => {
   const getAuthDialogVisible = computed(() => authDialogVisible.value)
   const getSignUpForm = computed(() => signUpForm.value)
   const getNickNameDialogVisible = computed(() => nickNameDialogVisible.value)
-
+  const isAuthenticated = ref(false)
   // Actions converted to regular functions
   const setAuthModalType = (type: string) => {
     authModalType.value = type
@@ -82,7 +83,12 @@ export const useAuthStore = defineStore('auth', () => {
   const setErrorMessage = (message: string) => {
     errMessage.value = message
   }
-
+  const setIsAuthenticated = (b: boolean) => {
+    isAuthenticated.value = b
+    console.log(router.currentRoute.value.path)
+    if(router.currentRoute.value.path == '/login')
+      router.push('/home')
+  }
   const setToken = (newToken: string) => {
     const networkData: NetworkData = NetworkData.getInstance()
     const netCfg: Netcfg = Netcfg.getInstance()
@@ -156,13 +162,18 @@ export const useAuthStore = defineStore('auth', () => {
 
     const next = (response: SignIn.GetSigninResponseData) => {
       if (response.code == 200) {
+        console.log(response.token)
         setToken(response.token)
         setSuccess(true)
+        console.log(success.value)
+        return success.value
       } else {
         setErrorMessage(handleException(response.code))
+        return success.value
       }
     }
     await network.sendMsg(route, msg, next, 1)
+    return success.value
   }
 
   const dispatchSignUp = async (msg: SignUp.SignupRequestData) => {
@@ -299,7 +310,7 @@ export const useAuthStore = defineStore('auth', () => {
     token,
     userInfo,
     userAmount,
-
+    isAuthenticated,
     getSuccess,
     getErrMessage,
     getAuthModalType,
@@ -310,7 +321,7 @@ export const useAuthStore = defineStore('auth', () => {
     getAuthDialogVisible,
     getSignUpForm,
     getNickNameDialogVisible,
-
+    setIsAuthenticated,
     setAuthModalType,
     setSuccess,
     setErrorMessage,

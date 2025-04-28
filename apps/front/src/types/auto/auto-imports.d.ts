@@ -7,6 +7,7 @@
 export {}
 declare global {
   const DEFAULT_RECONNECT_DELAY: (typeof import('../../composables/useWebsocket'))['DEFAULT_RECONNECT_DELAY']
+  const DisplaySymbol: typeof import('../../composables/display')['DisplaySymbol']
   const EState: (typeof import('../../composables/useWebsocket'))['EState']
   const EffectScope: typeof import('vue')['EffectScope']
   const EventManager: typeof import('../../composables/EventManager')['EventManager']
@@ -18,6 +19,7 @@ declare global {
   const asyncComputed: typeof import('@vueuse/core')['asyncComputed']
   const autoResetRef: typeof import('@vueuse/core')['autoResetRef']
   const balance: typeof import('../../composables/useWebsocket')['balance']
+  const breakpoints: typeof import('../../composables/display')['breakpoints']
   const computed: typeof import('vue')['computed']
   const computedAsync: typeof import('@vueuse/core')['computedAsync']
   const computedEager: typeof import('@vueuse/core')['computedEager']
@@ -27,6 +29,7 @@ declare global {
   const controlledComputed: typeof import('@vueuse/core')['controlledComputed']
   const controlledRef: typeof import('@vueuse/core')['controlledRef']
   const createApp: typeof import('vue')['createApp']
+  const createDisplay: typeof import('../../composables/display')['createDisplay']
   const createEventHook: typeof import('@vueuse/core')['createEventHook']
   const createGlobalState: typeof import('@vueuse/core')['createGlobalState']
   const createInjectionState: typeof import('@vueuse/core')['createInjectionState']
@@ -62,6 +65,7 @@ declare global {
   const isReadonly: typeof import('vue')['isReadonly']
   const isRef: typeof import('vue')['isRef']
   const makeDestructurable: typeof import('@vueuse/core')['makeDestructurable']
+  const makeDisplayProps: typeof import('../../composables/display')['makeDisplayProps']
   const mapActions: typeof import('pinia')['mapActions']
   const mapGetters: typeof import('pinia')['mapGetters']
   const mapState: typeof import('pinia')['mapState']
@@ -182,6 +186,7 @@ declare global {
   const useDeviceOrientation: typeof import('@vueuse/core')['useDeviceOrientation']
   const useDevicePixelRatio: typeof import('@vueuse/core')['useDevicePixelRatio']
   const useDevicesList: typeof import('@vueuse/core')['useDevicesList']
+  const useDisplay: typeof import('../../composables/display')['useDisplay']
   const useDisplayMedia: typeof import('@vueuse/core')['useDisplayMedia']
   const useDocumentVisibility: typeof import('@vueuse/core')['useDocumentVisibility']
   const useDraggable: typeof import('@vueuse/core')['useDraggable']
@@ -335,4 +340,7 @@ declare global {
   // @ts-ignore
   export type { EventManager, eventobject } from '../../composables/EventManager'
   import('../../composables/EventManager')
+  // @ts-ignore
+  export type { Breakpoint, DisplayBreakpoint, DisplayThresholds, DisplayProps, DisplayOptions, InternalDisplayOptions, SSROptions, DisplayPlatform, DisplayInstance } from '../../composables/display'
+  import('../../composables/display')
 }

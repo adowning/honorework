@@ -256,6 +256,7 @@ export class Network {
         const apiData = response.data as any
         // This Code is the business Code agreed with the backend
         const code = apiData.code
+        console.log(apiData)
         // If there is no Code, it means that this is not an API developed by the project backend
         if (code === undefined) {
           return Promise.reject(new Error('non-system interface'))
